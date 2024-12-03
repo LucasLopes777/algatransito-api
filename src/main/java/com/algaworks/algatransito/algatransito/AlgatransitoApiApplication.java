@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class AlgatransitoApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AlgatransitoApiApplication.class, args)
+		SpringApplication.run(AlgatransitoApiApplication.class, args);
 
 	}
 
