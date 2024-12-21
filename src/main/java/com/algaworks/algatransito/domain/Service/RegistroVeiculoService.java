@@ -45,4 +45,10 @@ public class RegistroVeiculoService {
         return veiculoRepository.save(novoVeiculo);
     }
 
+    @Transactional
+    public Veiculo buscar(Long veiculoId){
+        return veiculoRepository.findById(veiculoId)
+                .orElseThrow(() -> new NegocioException("Veículo não encontrado"));
+    }
+
 }
