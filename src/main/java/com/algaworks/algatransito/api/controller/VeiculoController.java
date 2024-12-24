@@ -3,6 +3,7 @@ package com.algaworks.algatransito.api.controller;
 import com.algaworks.algatransito.api.assembler.VeiculoAssembler;
 import com.algaworks.algatransito.api.model.VeiculoRepresentationModel;
 import com.algaworks.algatransito.api.model.input.VeiculoInput;
+import com.algaworks.algatransito.domain.Service.ApreensaoVeiculoService;
 import com.algaworks.algatransito.domain.Service.RegistroVeiculoService;
 import com.algaworks.algatransito.domain.model.Veiculo;
 import com.algaworks.algatransito.domain.repository.VeiculoRepository;
@@ -22,6 +23,7 @@ public class VeiculoController {
     private final VeiculoRepository veiculoRepository;
     private final RegistroVeiculoService registroVeiculoService;
     private final VeiculoAssembler veiculoAssembler;
+    private final ApreensaoVeiculoService apreensaoVeiculoService;
 
     @GetMapping
     public List<VeiculoRepresentationModel> listar(){
@@ -48,5 +50,15 @@ public class VeiculoController {
         return veiculoAssembler.toModel(veiculoCadastrado);
     }
 
+    @PutMapping("/{veiculoId}/apreensao")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void apreender(@PathVariable Long veiculoId){
+        apreensaoVeiculoService.apreender(veiculoId);
+    }
 
+    @DeleteMapping("/{veiculoId}/apreensao")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void removerApreensao(@PathVariable Long veiculoId){
+        apreensaoVeiculoService.removerApreensao(veiculoId);
+    }
 }
